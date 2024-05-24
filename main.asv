@@ -1,0 +1,44 @@
+% main.m
+a = 1;
+b = 7;
+cd = mod(a * b, 50);
+epsilon = 1e-4;
+max_steps = 1000; % Maximum steps for the optimization methods
+
+% Define the function and its gradient
+f = @(x) 0.25*x(1)^4 - 0.5*x(1)^2 + 0.1*x(1) + 0.5*x(2)^2;
+grad_f = @(x) [x(1)^3 - x(1) + 0.1; x(2)];
+
+% Initial guesses
+x0_1 = randn(2,1);
+x0_2 = 4 * rand(2,1) - 2;
+x0_3 = 4 * rand(2,1) - 2;
+
+% Call the optimization methods
+% Uncomment the method you want to use:
+
+% For Newton-Raphson
+% [x_min_1, steps_1] = newton_raphson(f, grad_f, x0_1, epsilon, max_steps);
+% [x_min_2, steps_2] = newton_raphson(f, grad_f, x0_2, epsilon, max_steps);
+% [x_min_3, steps_3] = newton_raphson(f, grad_f, x0_3, epsilon, max_steps);
+
+% For Hestenes-Stiefel
+% [x_min_1, steps_1] = hestenes_stiefel(f, grad_f, x0_1, epsilon, max_steps);
+% [x_min_2, steps_2] = hestenes_stiefel(f, grad_f, x0_2, epsilon, max_steps);
+% [x_min_3, steps_3] = hestenes_stiefel(f, grad_f, x0_3, epsilon, max_steps);
+
+% For Polak-Ribiere
+% [x_min_1, steps_1] = polak_ribiere(f, grad_f, x0_1, epsilon, max_steps);
+% [x_min_2, steps_2] = polak_ribiere(f, grad_f, x0_2, epsilon, max_steps);
+% [x_min_3, steps_3] = polak_ribiere(f, grad_f, x0_3, epsilon, max_steps);
+
+% For Fletcher-Reeves
+% [x_min_1, steps_1] = fletcher_reeves(f, grad_f, x0_1, epsilon, max_steps);
+% [x_min_2, steps_2] = fletcher_reeves(f, grad_f, x0_2, epsilon, max_steps);
+% [x_min_3, steps_3] = fletcher_reeves(f, grad_f, x0_3, epsilon, max_steps);
+
+% Display results
+fprintf('Optimization Results:\n');
+fprintf('Initial Guess 1: Minimum at [%f, %f] in %d steps\n', x_min_1, steps_1);
+fprintf('Initial Guess 2: Minimum at [%f, %f] in %d steps\n', x_min_2, steps_2);
+fprintf('Initial Guess 3: Minimum at [%f, %f] in %d steps\n', x_min_3, steps_3);
